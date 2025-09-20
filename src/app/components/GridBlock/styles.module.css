@@ -1,0 +1,68 @@
+.gridBlock {
+  background: var(--foreground);
+  border-radius: 0.5rem;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.hasWidget {
+  cursor: grab;
+}
+
+.hasWidget:active {
+  cursor: grabbing;
+}
+
+.empty {
+  aspect-ratio: 1 / 1;
+  background: transparent;
+}
+
+.deleteButton {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: #ff4444;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.hasWidget:hover .deleteButton {
+  opacity: 1;
+}
+
+.deleteButton:hover {
+  background: #cc0000;
+}
+
+.dragging {
+  opacity: 0.5;
+}
+
+.dropTarget {
+  border: 2px solid #0070f3;
+  background: rgba(0, 112, 243, 0.1);
+}
+
+.dropTarget .empty {
+  color: #0070f3;
+  font-weight: bold;
+}
