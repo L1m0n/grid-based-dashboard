@@ -1,6 +1,9 @@
 # Grid-Based Dashboard
 
 🚀 **Live Demo**: [https://grid-based-dashboard-rouge.vercel.app/](https://grid-based-dashboard-rouge.vercel.app/)
+To add a gridBlock, hover over the  block at the top  
+<img width="1724" height="814" alt="image" src="https://github.com/user-attachments/assets/64b6be9e-5023-46c6-a361-b5f1eb2b6271" />
+
 
 ## 🛠️ **Tech Stack**
 
