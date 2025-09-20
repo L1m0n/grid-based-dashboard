@@ -24,7 +24,7 @@ export default function BarChart({ widget }: BarChartProps) {
           <YAxis />
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
-          <Bar dataKey="uv" fill="#8884d8" />
+          <Bar dataKey="uv" fill="#8884d8" isAnimationActive={false} />
         </RechartsBarChart>
       </ResponsiveContainer>
     </div>

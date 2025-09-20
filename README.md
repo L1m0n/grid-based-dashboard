@@ -1,36 +1,93 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Grid-Based Dashboard
 
-## Getting Started
+🚀 **Live Demo**: [https://grid-based-dashboard-rouge.vercel.app/](https://grid-based-dashboard-rouge.vercel.app/)
 
-First, run the development server:
+## 🛠️ **Tech Stack**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Frontend**: React 19 + TypeScript + Next.js 15
+- **Styling**: CSS Modules
+- **State Management**: React Context + useState hooks
+- **Drag & Drop**: @dnd-kit library
+- **Charts**: Recharts for data visualization
+- **Package Manager**: pnpm
+- **Deployment**: Vercel
+
+## 🏗️ **Architecture**
+
+### **Type-Safe Design**
+```typescript
+// Discriminated union types for widget safety
+export type Widget = LineChartWidget | BarChartWidget | TextBlockWidget;
+
+// Chart widgets have dataset
+type LineChartWidget = {
+  type: "line-chart";
+  data: ChartData; // includes dataset: DatasetPoint[]
+};
+
+// Text widgets have content
+type TextBlockWidget = {
+  type: "text-block";
+  data: TextData; // includes content: string
+};
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### **Clean Component Structure**
+```
+src/
+├── app/
+│   ├── components/
+│   │   ├── GridDashboard/        # Main grid container + hooks
+│   │   ├── GridBlock/            # Individual cells + drag/drop logic
+│   │   ├── AddWidgetsBar/        # Widget creation buttons
+│   │   └── widgets/              # Typed widget components
+│   │       ├── LineChart.tsx     # Chart visualization
+│   │       ├── BarChart.tsx      # Bar visualization  
+│   │       └── TextBlock.tsx     # Text content
+├── context/
+│   └── DashboardContext.tsx      # Global state management
+├── types/
+│   └── index.ts                  # TypeScript definitions
+└── mock/
+    └── index.ts                  # Sample data
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### **Performance Optimizations**
+- **useCallback** hooks for expensive operations
+- **Set-based lookups** (O(1)) instead of array.includes (O(n))
+- **Optimized re-renders** with proper dependency arrays
+- **Dynamic grid calculation** based on widget positions
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🚀 **Getting Started**
 
-## Learn More
+### **Prerequisites**
+- Node.js 18+
+- pnpm (recommended) or npm
 
-To learn more about Next.js, take a look at the following resources:
+### **Installation**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Clone the repository**:
+   ```bash
+   git clone <repository-url>
+   cd grid-based-dashboard
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. **Install dependencies**:
+   ```bash
+   pnpm install
+   ```
 
-## Deploy on Vercel
+3. **Run development server**:
+   ```bash
+   pnpm dev
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. **Open your browser**:
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### **Build for Production**
+
+```bash
+pnpm build
+pnpm start
+```

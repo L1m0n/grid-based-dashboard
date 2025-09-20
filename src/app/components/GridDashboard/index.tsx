@@ -34,7 +34,7 @@ export default function GridDashboard() {
         })}
       </div>
 
-      <DragOverlay>
+      <DragOverlay adjustScale={false} dropAnimation={null}>
         {activeWidget ? (
           <div className={styles.dragOverlay}>
             <GridBlock widget={activeWidget} position={0} />
