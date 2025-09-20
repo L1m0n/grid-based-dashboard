@@ -14,10 +14,6 @@ export const useGridBlock = (position: number, widget: Widget | undefined) => {
   } = useDraggable({
     id: position,
     disabled: !widget,
-    transform: {
-      x: 0,
-      y: 0,
-    },
   });
 
   const { setNodeRef: setDropRef, isOver } = useDroppable({
